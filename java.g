@@ -2685,13 +2685,13 @@ JSXTextCharacter ::= Identifier '(' ? ! LBRACE LESS GREATER  OR RBRACE ')'
 JSXTextopt ::= ;opt
 /. $putCase consumeJSXTextopt(); $break ./
 /:$readableName JSXTextopt:/
-JSXAttributesopt ::=  $empty
-/. $putCase consumeJSXAttributesopt(); $break ./
+
+
 /:$readableName JSXAttributesopt:/
 JSXAttributesopt -> JSXAttributes
-/. $putCase consumeJSXAttributesopt(); $break ./
-/:$readableName JSXAttributesopt:/
 
+JSXAttributesopt ::=  $empty
+ /:$readableName JSXAttributesopt:/
 JSXElementName ::= JSXIdentifier   JSXNamespacedName   JSXMemberExpression
 /. $putCase consumeJSXElementName(); $break ./
 /:$readableName JSXElementName:/
@@ -2710,7 +2710,7 @@ JSXIdentifier ->  SimpleName [ JSX_EXCLUDE ]
 
 JSXAttributes ::= JSXSpreadAttribute JSXAttributesopt '|' JSXAttribute JSXAttributesopt
 /. $putCase consumeJSXAttributes(); $break ./
-/. $readableName JSXAttributes:/
+/:$readableName JSXAttributes:/
 JSXSpreadAttribute ::= '{' ...  AssignmentExpression '}'
 /. $putCase consumeJSXSpreadAttribute(); $break ./
 /:$readableName JSXSpreadAttribute:/
@@ -2744,7 +2744,7 @@ JSXAttributeInitializeropt ::=  $empty
 /. $putCase consumeJSXAttributeInitializeropt(); $break ./
 /:$readableName JSXAttributeInitializeropt:/
 JSXAttributeInitializeropt -> JSXAttributeInitializer
-JSXSpreadAttribute ::=  '{' ... AssignmentExpression '}' 
+JSXSpreadAttribute ::=  { ... AssignmentExpression }
 /. $putCase consumeJSXSpreadAttribute(); $break ./
 /:$readableName JSXSpreadAttribute:/
 

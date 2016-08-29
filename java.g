@@ -2744,7 +2744,9 @@ JSXAttributeInitializeropt ::=  $empty
 /. $putCase consumeJSXAttributeInitializeropt(); $break ./
 /:$readableName JSXAttributeInitializeropt:/
 JSXAttributeInitializeropt -> JSXAttributeInitializer
-
+JSXSpreadAttribute ::=  '{' ... AssignmentExpression '}' 
+/. $putCase consumeJSXSpreadAttribute(); $break ./
+/:$readableName JSXSpreadAttribute:/
 
 
 

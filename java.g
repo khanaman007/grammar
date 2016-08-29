@@ -2710,7 +2710,7 @@ JSXIdentifier ->  SimpleName [ JSX_EXCLUDE ]
 
 JSXAttributes ::= JSXSpreadAttribute JSXAttributesopt '|' JSXAttribute JSXAttributesopt
 /. $putCase consumeJSXAttributes(); $break ./
-/. $readableName JSXAttributes: $break ./
+/. $readableName JSXAttributes:/
 JSXSpreadAttribute ::= '{' ...  AssignmentExpression '}'
 /. $putCase consumeJSXSpreadAttribute(); $break ./
 /:$readableName JSXSpreadAttribute:/
